@@ -10,6 +10,7 @@ import {
 	Input,
 	FormElement,
 	Spacer,
+	Loading,
 } from "@nextui-org/react";
 
 import { useEffect, useState } from "react";
@@ -23,6 +24,7 @@ export default function Add() {
 	const [website, setWebiste] = useState("");
 	const [disable, setDisable] = useState(true);
 	const router = useRouter();
+	const [loadingbutton, setButtonLoading] = useState(false);
 
 	const [loading, setLoading] = useState(true);
 	const user = userService.userValue;
@@ -75,6 +77,8 @@ export default function Add() {
 					style={{ marginLeft: "auto", marginRight: "auto" }}
 					onSubmit={(e) => {
 						e.preventDefault();
+						setDisable(true);
+						setButtonLoading(true);
 						fetchWrapper
 							.post("/extract-url/", { xml_map: website })
 							.then((response) => {
@@ -118,7 +122,15 @@ export default function Add() {
 							disabled={disable}
 							style={{ marginTop: "auto", marginBottom: "auto" }}
 						>
-							Generate Script
+							{loadingbutton ? (
+								<Loading
+									type='spinner'
+									color='currentColor'
+									size='sm'
+								/>
+							) : (
+								"Generate Script"
+							)}
 						</Button>
 					</Row>
 				</form>
