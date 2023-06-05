@@ -37,18 +37,23 @@ export default function Dashbaord() {
 			>
 				<Spacer y={3} />
 				<Button
+				size="lg"
 					style={{
 						maxWidth: "600px",
 						marginRight: "auto",
 						marginLeft: "auto",
 					}}
 				>
-					<Link href='/dashboard/add'>Add New Chatbot</Link>
+					<Link color='inherit' href='/dashboard/add'>
+						Add New Chatbot
+					</Link>
 				</Button>
-				<Spacer y={2} />
+				<Spacer y={1} />
 				<Col
 					style={{
 						alignItems: "center",
+						paddingRight: "12px",
+						paddingLeft: "12px",
 					}}
 				>
 					<Spacer y={2} />
@@ -56,6 +61,22 @@ export default function Dashbaord() {
 
 					<Spacer y={4} />
 				</Col>
+
+				<Button
+					onClick={() => {
+						userService.logout();
+					}}
+					ghost
+					color='error'
+					style={{
+						maxWidth: "600px",
+						marginRight: "auto",
+						marginLeft: "auto",
+					}}
+				>
+					Logout
+				</Button>
+				<Spacer y={3} />
 			</Container>
 		</Layout>
 	);

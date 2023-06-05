@@ -13,7 +13,7 @@ type Items = {
 const TableDiv = ({ users }: Inputs) => {
 	const columns = [
 		{ name: "NAME", uid: "name" },
-		{ name: "ACTIONS", uid: "actions" },
+		{ name: "SCRIPT", uid: "actions" },
 	];
 
 	const router = useRouter();

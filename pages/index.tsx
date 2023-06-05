@@ -84,9 +84,10 @@ export default function Home() {
 						<Text
 							style={{
 								fontWeight: "200",
-								fontSize: "22px",
+								fontSize: "18px",
 								lineHeight: "34px",
 								textAlign: "center",
+								color: "#484848",
 							}}
 						>
 							The worlds first most accessible chatbot which uses
@@ -107,7 +108,7 @@ export default function Home() {
 						</Text>
 						<Spacer y={1} />
 						<form
-							style={{ width: "100%" }}
+							style={{ width: "100%", marginLeft:"8px" }}
 							onSubmit={(e) => {
 								e.preventDefault();
 								userService
