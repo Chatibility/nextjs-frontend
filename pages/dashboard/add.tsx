@@ -11,6 +11,7 @@ import {
 	FormElement,
 	Spacer,
 	Loading,
+	Link,
 } from "@nextui-org/react";
 
 import { useEffect, useState } from "react";
@@ -134,6 +135,10 @@ export default function Add() {
 						</Button>
 					</Row>
 				</form>
+				<Spacer y={3} />
+				<Button>
+					<Link href='/dashboard'>Return to Dashboard</Link>
+				</Button>
 			</Container>
 		</Layout>
 	);
