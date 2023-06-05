@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { Container, Col, Spacer, Button } from "@nextui-org/react";
+import { Container, Col, Spacer, Button, Link } from "@nextui-org/react";
 
 import styles from "@/styles/Home.module.css";
 import TableDiv from "@/containers/Table/Table";
@@ -43,7 +43,7 @@ export default function Dashbaord() {
 						marginLeft: "auto",
 					}}
 				>
-					Add New Chatbot
+					<Link href='/dashboard/add'>Add New Chatbot</Link>
 				</Button>
 				<Spacer y={2} />
 				<Col
