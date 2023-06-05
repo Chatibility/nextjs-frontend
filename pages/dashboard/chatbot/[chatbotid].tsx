@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { userService } from "@/services/user.service";
 
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import html from "react-syntax-highlighter/dist/cjs/languages/hljs/htmlbars";
 import atomOneLight from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-light";
 
 export default function Chatbot() {
@@ -58,11 +57,11 @@ export default function Chatbot() {
 				</Text>
 				<Spacer y={4} />
 				<Text>Add this code to header of your html:</Text>
-				<SyntaxHighlighter language={html} style={atomOneLight}>
+				<SyntaxHighlighter style={atomOneLight}>
 					{codeSnippet}
 				</SyntaxHighlighter>
 				<Text>Add this code to the body of your html:</Text>
-				<SyntaxHighlighter language={html} style={atomOneLight}>
+				<SyntaxHighlighter style={atomOneLight}>
 					{codeSnippet2}
 				</SyntaxHighlighter>
 				<Spacer y={2} />

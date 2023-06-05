@@ -3,12 +3,6 @@ import type { AppProps } from "next/app";
 
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-
-import html from "react-syntax-highlighter/dist/cjs/languages/hljs/htmlbars";
-SyntaxHighlighter.registerLanguage("html", html);
-
-
 const theme = createTheme({
 	type: "light",
 	theme: {
