@@ -21,8 +21,9 @@ import { useEffect, useState } from "react";
 import { ChangeEvent } from "react";
 import { userService } from "@/services/user.service";
 import { useRouter } from "next/router";
+import { fetchWrapper } from "@/lib/fetchWrapper";
 
-export default function Home() {
+export default function SignUp() {
 	const [loading, setLoading] = useState(true);
 	const user = userService.userValue;
 	const isLoggedIn = user && user.token;
@@ -38,6 +39,8 @@ export default function Home() {
 
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [password_confirm, setConfirmPassword] = useState("");
+
 	const [disable, setDisable] = useState(true);
 
 	const handleUsername = (e: ChangeEvent<FormElement>) => {
@@ -50,6 +53,14 @@ export default function Home() {
 	};
 	const handlePassword = (e: ChangeEvent<FormElement>) => {
 		setPassword(e.currentTarget.value);
+		if (e.currentTarget.value && username) {
+			setDisable(false);
+		} else {
+			setDisable(true);
+		}
+	};
+	const handleConfirmPassword = (e: ChangeEvent<FormElement>) => {
+		setConfirmPassword(e.currentTarget.value);
 		if (e.currentTarget.value && username) {
 			setDisable(false);
 		} else {
@@ -110,10 +121,15 @@ export default function Home() {
 							style={{ width: "100%" }}
 							onSubmit={(e) => {
 								e.preventDefault();
-								userService
-									.login(username, password)
-									.then(() => {
-										router.push("/dashboard");
+								fetchWrapper
+									.post(`/accounts/register/`, {
+										username,
+										password,
+										password_confirm,
+									})
+									.then((respond) => {
+										console.log(respond);
+										router.push("/");
 									});
 							}}
 						>
@@ -132,10 +148,20 @@ export default function Home() {
 									className={styles.input}
 									label='Password'
 									size='xl'
-									id='password'
-									name='password'
+									id='email'
+									name='email'
 									type='password'
 									onChange={handlePassword}
+								/>
+								<Spacer y={1} />
+								<Input
+									className={styles.input}
+									label='Confirm Password'
+									size='xl'
+									id='confirm-password'
+									name='confirm-password'
+									type='password'
+									onChange={handleConfirmPassword}
 								/>
 								<Spacer y={1.5} />
 
@@ -144,7 +170,7 @@ export default function Home() {
 									type='submit'
 									disabled={disable}
 								>
-									Log In
+									Sign Up
 								</Button>
 								<Spacer y={1} />
 								<Link
@@ -153,9 +179,9 @@ export default function Home() {
 										textDecoration: "underline",
 										fontSize: "18px",
 									}}
-									href='/signup'
+									href='/'
 								>
-									Or Sign Up Here
+									Or Log in Here
 								</Link>
 							</Col>
 						</form>
