@@ -32,7 +32,7 @@ export default function Home() {
 		if (!isLoggedIn) {
 			setLoading(false);
 		} else {
-			router.push("/");
+			router.push("/dashboard");
 		}
 	}, [isLoggedIn, router, user]);
 
