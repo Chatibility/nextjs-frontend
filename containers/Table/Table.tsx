@@ -5,6 +5,11 @@ import { useRouter } from "next/router";
 type Inputs = {
 	users: any;
 };
+
+type Items = {
+	uuid: string;
+	name: string;
+};
 const TableDiv = ({ users }: Inputs) => {
 	const columns = [
 		{ name: "NAME", uid: "name" },
@@ -56,7 +61,7 @@ const TableDiv = ({ users }: Inputs) => {
 				)}
 			</Table.Header>
 			<Table.Body items={users}>
-				{(item) => (
+				{(item: Items) => (
 					<Table.Row key={item.uuid}>
 						{(columnKey) => (
 							<Table.Cell>
