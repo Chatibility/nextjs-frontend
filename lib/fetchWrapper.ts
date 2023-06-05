@@ -24,7 +24,7 @@ export const fetchWrapper: FetchWrapper = {
 	delete: _delete,
 };
 
-const apiUrl = "https://api.chatibility.com";
+const apiUrl = "http://185.220.205.156";
 
 function get(url: string, auth_token?: string): Promise<any> {
 	url = apiUrl + url;
